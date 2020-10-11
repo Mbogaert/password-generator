@@ -34,10 +34,10 @@ function generatePassword() {
   console.log('askLowercase', askLowercase, typeof askLowercase);
 
   if (askLowercase === false) {
-    var arrLowercase = [];
+    var allLowercase = [];
   }
   else {
-    var arrLowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+    var allLowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
   };
   
 //  confirm: UPPERCASE yes or no
@@ -46,10 +46,10 @@ var askUppercase = window.confirm("Would you like to include at least 1 uppercas
 console.log('askUppercase', askUppercase, typeof askUppercase);
 
 if (askUppercase === false) {
-  var arrUppercase = [];
+  var allUppercase = [];
 }
 else {
-  var arrUppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+  var allUppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 };
 
 //  confirm: numeric yes or no
@@ -58,10 +58,10 @@ var askNumeric = window.confirm("Would you like to include at least 1 number? \n
 console.log('askNumeric', askNumeric, typeof askNumeric);
 
 if (askNumeric === false) {
-  var arrNumeric = [];
+  var allNumeric = [];
 }
 else {
-  var arrNumeric = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+  var allNumeric = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 };
 
 //  confirm: special characters yes or no
@@ -70,10 +70,10 @@ var askSpecialChar = window.confirm("Would you like to include at least 1 specia
 console.log('askSpecialChar', askSpecialChar, typeof askSpecialChar);
 
 if (askSpecialChar === false) {
-  var arrSpecialChar = [];
+  var allSpecialChar = [];
 }
 else {
-  var arrSpecialChar = ["~", "!", "@", "#", "$", "%", "^", "&", "*", "+", "=", "-", "?", "<", ">"];
+  var allSpecialChar = ["~", "!", "@", "#", "$", "%", "^", "&", "*", "+", "=", "-", "?", "<", ">"];
 };
 
 // at least one of each confirmed criteria should be included in the generated password
@@ -84,10 +84,10 @@ if (askLowercase === false && askUppercase === false && askNumeric === false && 
 
 // generate a password with criteria
 //  size: 8 --> 12345678 128 --> 123455....8
-//  arrLowercase: if true then the password will contain one lowercase
-//  arrUppercase: if true then the password will contain one uppercase
-//  arrNumeric: if true then the password will contain one number
-//  arrSpecialChar: if true then the password will contain one special character
+//  allLowercase: if true then the password will contain one lowercase
+//  allUppercase: if true then the password will contain one uppercase
+//  allNumeric: if true then the password will contain one number
+//  allSpecialChar: if true then the password will contain one special character
  
   return '';
 }
