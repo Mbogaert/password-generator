@@ -21,6 +21,7 @@ function generatePassword() {
     alert("Invalid format. Please enter a valid number between 8 and 128.");
     return '';
   }
+  // if size is too big or too small return an error
   if (size < 8 || size > 128) {
     alert("Invalid legnth. Please choose a value between 8 and 128.");
     return '';
@@ -75,11 +76,20 @@ else {
   var arrSpecialChar = ["~", "!", "@", "#", "$", "%", "^", "&", "*", "+", "=", "-", "?", "<", ">"];
 };
 
-//     at least one of each confirmed criteria should be included in the generated password
+// at least one of each confirmed criteria should be included in the generated password
+if (askLowercase === false && askUppercase === false && askNumeric === false && askSpecialChar === false) {
+  window.alert("Invalid input. You must choose at least 1 character type.");
+  return '';
+}
 
-// generate a password with above criteria
-
-  return "zero";
+// generate a password with criteria
+//  size: 8 --> 12345678 128 --> 123455....8
+//  arrLowercase: if true then the password will contain one lowercase
+//  arrUppercase: if true then the password will contain one uppercase
+//  arrNumeric: if true then the password will contain one number
+//  arrSpecialChar: if true then the password will contain one special character
+ 
+  return '';
 }
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
