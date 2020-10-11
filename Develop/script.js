@@ -11,8 +11,8 @@ function writePassword() {
 }
 
 function generatePassword() {
-// TODO: prompt: what is the length?
-//    valid values are >=8 characters && <=128 characters
+  // TODO: prompt: what is the length?
+  //    valid values are >=8 characters && <=128 characters
 
   var size = prompt("What is the length of the password? \nEnter a number between 8-128.", "8");
   size = Number.parseInt(size, 10);
@@ -28,68 +28,67 @@ function generatePassword() {
   }
   console.log('size', size, typeof size);
 
+  var list = [];
+
   // confirm: lowercase yes or no 
-  var askLowercase = window.confirm("Would you like to include at least 1 lowercase letter? \nOK for yes, CANCEL for no.");
+  var askLowercase = window.confirm("Would you like the password to include lowercase letters? \nOK for yes, CANCEL for no.");
 
   console.log('askLowercase', askLowercase, typeof askLowercase);
 
-  if (askLowercase === false) {
-    var allLowercase = [];
-  }
-  else {
-    var allLowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+  if (askLowercase === true) {
+    list.push("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z");
   };
-  
-//  confirm: UPPERCASE yes or no
-var askUppercase = window.confirm("Would you like to include at least 1 uppercase letter? \nOK for yes, CANCEL for no.");
+  console.log(list);
 
-console.log('askUppercase', askUppercase, typeof askUppercase);
+  //  confirm: UPPERCASE yes or no
+  var askUppercase = window.confirm("Would you like to include uppercase letter? \nOK for yes, CANCEL for no.");
 
-if (askUppercase === false) {
-  var allUppercase = [];
-}
-else {
-  var allUppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-};
+  console.log('askUppercase', askUppercase, typeof askUppercase);
 
-//  confirm: numeric yes or no
-var askNumeric = window.confirm("Would you like to include at least 1 number? \nOK for yes, CANCEL for no.");
+  if (askUppercase === true) {
+    list.push("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z");
+  };
+  console.log(list);
 
-console.log('askNumeric', askNumeric, typeof askNumeric);
+  //  confirm: numeric yes or no
+  var askNumeric = window.confirm("Would you like to include numbers? \nOK for yes, CANCEL for no.");
 
-if (askNumeric === false) {
-  var allNumeric = [];
-}
-else {
-  var allNumeric = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-};
+  console.log('askNumeric', askNumeric, typeof askNumeric);
 
-//  confirm: special characters yes or no
-var askSpecialChar = window.confirm("Would you like to include at least 1 special character? (ie ~, !, @, #, $, etc) \nOK for yes, CANCEL for no.");
+  if (askNumeric === true) {
+  list.push("0", "1", "2", "3", "4", "5", "6", "7", "8", "9");
+  };
+  console.log(list);
 
-console.log('askSpecialChar', askSpecialChar, typeof askSpecialChar);
+  //  confirm: special characters yes or no
+  var askSpecialChar = window.confirm("Would you like to include the password to include special characters? (ie ~, !, @, #, $, etc) \nOK for yes, CANCEL for no.");
 
-if (askSpecialChar === false) {
-  var allSpecialChar = [];
-}
-else {
-  var allSpecialChar = ["~", "!", "@", "#", "$", "%", "^", "&", "*", "+", "=", "-", "?", "<", ">"];
-};
+  console.log('askSpecialChar', askSpecialChar, typeof askSpecialChar);
 
-// at least one of each confirmed criteria should be included in the generated password
-if (askLowercase === false && askUppercase === false && askNumeric === false && askSpecialChar === false) {
-  window.alert("Invalid input. You must choose at least 1 character type.");
-  return '';
-}
+  if (askSpecialChar === true) {
+    list.push("~", "!", "@", "#", "$", "%", "^", "&", "*", "+", "=", "-", "?", "<", ">");
+  };
+  console.log(list);
 
-// generate a password with criteria
-//  size: 8 --> 12345678 128 --> 123455....8
-//  allLowercase: if true then the password will contain one lowercase
-//  allUppercase: if true then the password will contain one uppercase
-//  allNumeric: if true then the password will contain one number
-//  allSpecialChar: if true then the password will contain one special character
- 
-  return '';
+  // at least one of each confirmed criteria should be included in the generated password
+  if (askLowercase === false && askUppercase === false && askNumeric === false && askSpecialChar === false) {
+    window.alert("Invalid input. You must choose at least 1 character type.");
+    return '';
+  }
+
+ // initialize string for password
+  var generated = '';
+
+  for (var i = 0; i < size; i++) {
+    generated += list[Math.floor(Math.random() * list.length)]
+  }
+
+  console.log(generated);
+
+
+// Math.floor(Math.random() * MAXsize)
+
+  return generated;
 }
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
