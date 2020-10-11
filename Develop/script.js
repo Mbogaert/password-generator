@@ -11,9 +11,7 @@ function writePassword() {
 }
 
 function generatePassword() {
-  // TODO: prompt: what is the length?
-  //    valid values are >=8 characters && <=128 characters
-
+  //  Ask about length of password prompt
   var size = prompt("What is the length of the password? \nEnter a number between 8-128.", "8");
   size = Number.parseInt(size, 10);
   // if size is not NaN then return an error
@@ -23,11 +21,11 @@ function generatePassword() {
   }
   // if size is too big or too small return an error
   if (size < 8 || size > 128) {
-    alert("Invalid legnth. Please choose a value between 8 and 128.");
+    alert("Invalid length. Please choose a value between 8 and 128.");
     return '';
   }
   console.log('size', size, typeof size);
-
+  // variable declaring the list array
   var list = [];
 
   // confirm: lowercase yes or no 
@@ -35,7 +33,7 @@ function generatePassword() {
 
   console.log('askLowercase', askLowercase, typeof askLowercase);
 
-  if (askLowercase === true) {
+  if (askLowercase === true) { // pushes characters to list arrary
     list.push("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z");
   };
   console.log(list);
@@ -45,7 +43,7 @@ function generatePassword() {
 
   console.log('askUppercase', askUppercase, typeof askUppercase);
 
-  if (askUppercase === true) {
+  if (askUppercase === true) { // pushes characters to list array
     list.push("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z");
   };
   console.log(list);
@@ -55,8 +53,8 @@ function generatePassword() {
 
   console.log('askNumeric', askNumeric, typeof askNumeric);
 
-  if (askNumeric === true) {
-  list.push("0", "1", "2", "3", "4", "5", "6", "7", "8", "9");
+  if (askNumeric === true) { // pushes characters to list array
+    list.push("0", "1", "2", "3", "4", "5", "6", "7", "8", "9");
   };
   console.log(list);
 
@@ -65,7 +63,7 @@ function generatePassword() {
 
   console.log('askSpecialChar', askSpecialChar, typeof askSpecialChar);
 
-  if (askSpecialChar === true) {
+  if (askSpecialChar === true) { // pushes characters to list array
     list.push("~", "!", "@", "#", "$", "%", "^", "&", "*", "+", "=", "-", "?", "<", ">");
   };
   console.log(list);
@@ -76,8 +74,15 @@ function generatePassword() {
     return '';
   }
 
- // initialize string for password
+  // initialize string for password
   var generated = '';
+
+  // NOTE TO SELF: this is the breakdown of the loop below 
+  // var counter = 0 
+  // while (counter < size) {
+  //   generated += list[Math.floor(Math.random() * list.length)]
+  //     counter = counter + 1
+  //  }
 
   for (var i = 0; i < size; i++) {
     generated += list[Math.floor(Math.random() * list.length)]
@@ -86,7 +91,7 @@ function generatePassword() {
   console.log(generated);
 
 
-// Math.floor(Math.random() * MAXsize)
+  // NOTE TO SELF: random code equation Math.floor(Math.random() * MAXsize)
 
   return generated;
 }
