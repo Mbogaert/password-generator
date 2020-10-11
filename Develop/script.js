@@ -14,11 +14,23 @@ function generatePassword() {
 // TODO: prompt: what is the length?
 //    valid values are >=8 characters && <=128 characters
 
-  var size = prompt("What is the length of the password? Enter a number between 8-128.", "8");
-  console.log(size, typeof size);
+  var size = prompt("What is the length of the password? \nEnter a number between 8-128.", "8");
+  size = Number.parseInt(size, 10);
+  // if size is not NaN then return an error
+  if (Number.isNaN(size)) {
+    alert("Invalid format. Please enter a valid number between 8 and 128.");
+    return '';
+  }
+  if (size < 8 || size > 128) {
+    alert("Invalid legnth. Please choose a value between 8 and 128.");
+    return '';
+  }
+  console.log('size', size, typeof size);
 
   // confirm: lowercase yes or no 
-  var askLowercase = window.confirm("Would you like to include at least 1 lowercase letter?");
+  var askLowercase = window.confirm("Would you like to include at least 1 lowercase letter? \nOK for yes, CANCEL for no.");
+
+  console.log('askLowercase', askLowercase, typeof askLowercase);
 
   if (askLowercase === false) {
     var arrLowercase = [];
@@ -28,7 +40,9 @@ function generatePassword() {
   };
   
 //  confirm: UPPERCASE yes or no
-var askUppercase = window.confirm("Would you like to include at least 1 uppercase letter?");
+var askUppercase = window.confirm("Would you like to include at least 1 uppercase letter? \nOK for yes, CANCEL for no.");
+
+console.log('askUppercase', askUppercase, typeof askUppercase);
 
 if (askUppercase === false) {
   var arrUppercase = [];
@@ -38,7 +52,9 @@ else {
 };
 
 //  confirm: numeric yes or no
-var askNumeric = window.confirm("Would you like to include at least 1 number?");
+var askNumeric = window.confirm("Would you like to include at least 1 number? \nOK for yes, CANCEL for no.");
+
+console.log('askNumeric', askNumeric, typeof askNumeric);
 
 if (askNumeric === false) {
   var arrNumeric = [];
@@ -48,7 +64,9 @@ else {
 };
 
 //  confirm: special characters yes or no
-var askSpecialChar = window.confirm("Would you like to include at least 1 special character? (ie ~, !, @, #, $, etc)");
+var askSpecialChar = window.confirm("Would you like to include at least 1 special character? (ie ~, !, @, #, $, etc) \nOK for yes, CANCEL for no.");
+
+console.log('askSpecialChar', askSpecialChar, typeof askSpecialChar);
 
 if (askSpecialChar === false) {
   var arrSpecialChar = [];
